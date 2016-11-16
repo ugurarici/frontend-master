@@ -21,7 +21,10 @@
     css dosyalarini minify eder.
     
     @rename
-    dosyalari yeniden isimlendirebilmemize olanak saglar.    
+    dosyalari yeniden isimlendirebilmemize olanak saglar.  
+
+    @htmlmin
+    html dosyalarını minify etmeye yarar, js kodundaki kırılımlar olmadığı sürece tek satıra indirir
     
  
     */
@@ -29,11 +32,13 @@
     var gulp = require("gulp"),
     sass = require("gulp-sass"),
     uglify_js = require("gulp-uglifyjs"),
+    minify = require("gulp-minify"),
     file_include = require("gulp-file-include"),
     concat_css = require("gulp-concat-css"),
     concat = require("gulp-concat"),
     minify_css = require("gulp-minify-css"),
-    rename = require("gulp-rename");
+    rename = require("gulp-rename"),
+    htmlmin = require('gulp-htmlmin');
     
 
 
@@ -82,35 +87,23 @@
 
 /* 
 
-    Gorev II : external_js
-    
-    Eklentilerin cagirildigi ve eklentilerle bagimli olan javascriptlerin bulundugu external.js dosyasının (dev/js/external.js)
-minify edilip assets/js klasorune external.min.js olarak kaydedilmesi.
+    Gorev II : minify_js
 
-*/
+    dev/js içinde bulunan tüm dosyaları alıp minify ederek assets/js içine kaydeder, uzantılarından önce ".min" ekler
 
-gulp.task("external_js", function() {
-    return gulp.src(dev_js_dir + "external.js")
-    .pipe(uglify_js())
-    .pipe(rename('external.min.js'))
-    .pipe(gulp.dest(assets_js_dir));
-});
-
-
-
-
-/* 
-
-    Gorev III : main_js
-    
-    Proje icin yazilmis javascriptlerin bulundugu main.js dosyasının (dev/js/main.js) minify edilip assets/js klasorune main.min.js olarak kaydedilmesi.
-    
     */
 
-    gulp.task("main_js", function() {
-        return gulp.src(dev_js_dir + "main.js")
-        .pipe(uglify_js())
-        .pipe(rename('main.min.js'))
+
+
+    gulp.task("minify_js", function() {
+        return gulp.src(dev_js_dir + "*.js")
+        .pipe(minify({
+            ext:{
+                src:false,
+                min:'.min.js'
+            },
+            noSource: "*"
+        }))
         .pipe(gulp.dest(assets_js_dir));
     });
 
@@ -125,7 +118,9 @@ gulp.task("external_js", function() {
     
     */
 
+
     gulp.task("plugins_js", function() {
+        // burada .src içindeki dizi'nin (köşeli parantez) içine, birleştirilmesi istenen eklentilerin js dosyalarının yolları, virgüllerle ayrılarak verilmelidir
         return gulp.src([])
         .pipe(concat("plugins.min.js"))
         .pipe(uglify_js())
@@ -144,6 +139,7 @@ gulp.task("external_js", function() {
     */
 
     gulp.task("plugins_css", function() {
+        // burada .src içindeki dizi'nin (köşeli parantez) içine, birleştirilmesi istenen eklentilerin css dosyalarının yolları, virgüllerle ayrılarak verilmelidir
         return gulp.src([])
         .pipe(concat_css("plugins.min.css"))
         .pipe(minify_css({
@@ -190,6 +186,7 @@ gulp.task("external_js", function() {
             prefix: '@@',
             basepath: '@file'
         }))
+        .pipe(htmlmin({collapseWhitespace: true, minifyJS: true}))
         .pipe(gulp.dest("./"));
     });
 
@@ -208,11 +205,11 @@ gulp.task("external_js", function() {
 
     gulp.task("watch", function() {
         gulp.watch(dev_scss_sub_dir + "*.scss", ['sass']);
-        gulp.watch(dev_js_dir + "external.js", ['external_js']);
-        gulp.watch(dev_js_dir + "main.js", ['main_js']);
+        gulp.watch(dev_js_dir + "*.js", ['minify_js']);
         gulp.watch(dev_scss_dir + "bootstrap/*.scss", ['bootstrap']);
         gulp.watch(dev_pages_dir + "*.html", ['file_include']);
         gulp.watch(dev_layouts_dir + "*.html", ['file_include']);
+        gulp.watch(dev_layouts_dir + "*/*.html", ['file_include']);
     });
 
 
@@ -233,4 +230,4 @@ gulp.task("external_js", function() {
     
     */
 
-    gulp.task("default", ["watch", "sass", "external_js", "main_js", "plugins_js", "plugins_css", "bootstrap", "file_include"]);
+    gulp.task("default", ["watch", "sass", "minify_js", "plugins_js", "plugins_css", "bootstrap", "file_include"]);

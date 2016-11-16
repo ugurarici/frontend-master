@@ -49,3 +49,11 @@ Lütfen katkıda bulunmaktan çekinmeyin ve bu iş için ortak dil olabilecek bi
 
 ### Katkıda Bulunun
 Önyüz geliştirme sürecini hızlıca başlamak ve kolaylaştırmak için geliştirilen bu zemine katkıda bulunmak istiyorsanız öncelikle bu depoyu forklayın, öngördüğünüz değişiklikleri uygulayıp uygun açıklamalar ile birlikte pull request oluşturun.
+
+---
+
+## Güncelleme Geçmişi
+### v1.1
+* Yeni gulp eklentileri ile gulp görevleri güncellendi
+* HTML dosyalarının tek satıra sıkıştırılması için _gulp-htmlmin_ dahil edildi
+* ```/dev/js``` dizini içerisindeki *tüm .js dosyalarının*, sıkıştırılıp kendiadi.min.js şeklinde ```/assets/js``` dizini içerisine kopyalanmasını sağlayacak _gulp-minify_ eklentisi eklendi ve gulpfile.js içindeki javascript dosyaları ile ilgili görevler bu hesaba katılarak güncellendi.
