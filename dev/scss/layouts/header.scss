@@ -1,0 +1,23 @@
+/* 
+
+    Header
+    Header kisminda bulunan elementlerine kazandirilmis stiller burada yer alir 
+
+*/
+
+.main-header {
+    background: $white-color;
+    padding: 20px 0;
+    width: 100%;
+    &.fixed{
+        z-index: 99999;
+        position: fixed;
+        top: 0;
+    }
+    @include responsive(991){
+        padding: 10px 0;
+       .logo img{
+            width: 110px;
+        }
+    }
+}

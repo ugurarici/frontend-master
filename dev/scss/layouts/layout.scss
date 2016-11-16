@@ -1,0 +1,22 @@
+/* 
+
+    Layout
+    Birden cok sayfada kullanilacak ayni stiller burada yer alir.
+
+*/
+
+body{
+    font-family: $second-font;
+    font-size: 14px;
+    color: $def-text-color;
+    background-color: $gray-color;
+}
+
+.main{
+    position: relative;
+    width: 100%;
+}
+
+textarea{
+    resize: none;
+}

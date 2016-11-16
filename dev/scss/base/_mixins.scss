@@ -1,0 +1,70 @@
+/* 
+
+    Mixins
+
+*/
+
+
+// Responsive
+
+@mixin responsive($media) {
+    @if $media == phone {
+        @media (max-width: 480px) { @content; }
+    }
+    @else if $media == xs {
+        @media (max-width: 767px) {@content; }
+    }
+    @else if $media == sm {
+        @media (min-width: 768px) and (max-width: 979px) { @content; }
+    }
+    @else if $media == md {
+        @media (min-width: 1200px) { @content; }
+    }
+    @else if $media == non-retina {
+        @media screen and (-webkit-max-device-pixel-ratio: 1) { @content; }
+    }
+    @else if $media == retina {
+        @media screen and (-webkit-min-device-pixel-ratio: 2) { @content; }
+    }
+    @else {
+        @media only screen and (max-width: #{$media}px) { @content; }
+    }
+}
+
+// Transition
+@mixin transition($val...) {
+  -webkit-transition: $val;
+  -moz-transition: $val;
+  -ms-transition: $val;
+  -o-transition: $val;
+  transition: $val;
+}
+
+@mixin radius($val) { 
+  -webkit-border-radius: $val;
+  -moz-border-radius: $val;
+  -ms-border-radius: $val;
+  -o-border-radius: $val;
+  border-radius: $val;
+}
+
+// Opacity
+@mixin opacity($val) {
+  opacity: $val;
+  $opacity-ie: $val * 100;
+  filter: alpha(opacity=$opacity-ie); 
+}
+
+// Buttons
+
+@mixin button($bg, $color){
+        background: $bg;
+        color: $color;
+        &:hover{
+            background: darken($bg,8%);
+        }
+        &:active{
+            background: darken($bg,12%);
+        }
+    }
+ 

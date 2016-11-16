@@ -1,0 +1,205 @@
+/* 
+    Yardimci Siniflar
+*/
+
+.full-width{
+    width: 100%;
+    float: left;
+}
+
+.hidden-element{
+    @include opacity(0);
+    visibility: hidden;
+}
+
+.visible-element{
+    @include opacity(1);
+    visibility: visible;
+}
+
+.border-box{
+   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.inline-block{
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+
+.transition-bg{
+    @include transition(background 0.3s ease);
+}
+.transition-color{
+    @include transition(color 0.3s ease);
+}
+
+
+/* 
+    Padding
+*/
+
+.no-padding{padding: 0 !important;}
+.padding-5{padding: 5px !important;}
+.padding-10{padding: 10px !important;}
+.padding-15{padding: 15px !important;}
+.padding-20{padding: 20px !important;}
+.padding-25{padding: 25px !important;}
+.padding-30{padding: 30px !important;}
+
+.p-r-0{padding-right: 0 !important;}
+.p-r-5{padding-right: 5px !important;}
+.p-r-10{padding-right: 10px !important;}
+.p-r-15{padding-right: 15px !important;}
+.p-r-20{padding-right: 20px !important;}
+.p-r-25{padding-right: 25px !important;}
+.p-r-30{padding-right: 30px !important;}
+
+.p-l-0{padding-left: 0 !important;}
+.p-l-5{padding-left: 5px !important;}
+.p-l-10{padding-left: 10px !important;}
+.p-l-15{padding-left: 15px !important;}
+.p-l-20{padding-left: 20px !important;}
+.p-l-25{padding-left: 25px !important;}
+.p-l-30{padding-left: 30px !important;}
+
+.p-t-0{padding-top: 0 !important;}
+.p-t-5{padding-top: 5px !important;}
+.p-t-10{padding-top: 10px !important;}
+.p-t-15{padding-top: 15px !important;}
+.p-t-20{padding-top: 20px !important;}
+.p-t-25{padding-top: 25px !important;}
+.p-t-30{padding-top: 30px !important;}
+
+.p-b-0{padding-bottom: 0 !important;}
+.p-b-5{padding-bottom: 5px !important;}
+.p-b-10{padding-bottom: 10px !important;}
+.p-b-15{padding-bottom: 15px !important;}
+.p-b-20{padding-bottom: 20px !important;}
+.p-b-25{padding-bottom: 25px !important;}
+.p-b-30{padding-bottom: 30px !important;}
+
+/* 
+    Margin
+*/
+
+.no-margin{margin: 0 !important;}
+
+.m-r-0{margin-right: 0 !important;}
+.m-r-5{margin-right: 5px !important;}
+.m-r-10{margin-right: 10px !important;}
+.m-r-15{margin-right: 15px !important;}
+.m-r-20{margin-right: 20px !important;}
+.m-r-25{margin-right: 25px !important;}
+.m-r-30{margin-right: 30px !important;}
+
+.m-l-0{margin-left: 0 !important;}
+.m-l-5{margin-left: 5px !important;}
+.m-l-10{margin-left: 10px !important;}
+.m-l-15{margin-left: 15px !important;}
+.m-l-20{margin-left: 20px !important;}
+.m-l-25{margin-left: 25px !important;}
+.m-l-30{margin-left: 30px !important;}
+
+.m-t-0{margin-top: 0 !important;}
+.m-t-5{margin-top: 5px !important;}
+.m-t-10{margin-top: 10px !important;}
+.m-t-15{margin-top: 15px !important;}
+.m-t-20{margin-top: 20px !important;}
+.m-t-25{margin-top: 25px !important;}
+.m-t-30{margin-top: 30px !important;}
+
+.m-b-0{margin-bottom: 0 !important;}
+.m-b-5{margin-bottom: 5px !important;}
+.m-b-10{margin-bottom: 10px !important;} 
+.m-b-15{margin-bottom: 15px !important;}
+.m-b-20{margin-bottom: 20px !important;}
+.m-b-25{margin-bottom: 25px !important;}
+.m-b-30{margin-bottom: 30px !important;}
+
+/* 
+    Border
+*/
+
+.b-b{
+    border-bottom: 1px solid $gray-color;
+}
+.b-l{
+    border-left: 1px solid $gray-color;
+}
+.b-r{
+    border-right: 1px solid $gray-color;
+}
+.b-t{
+    border-top: 1px solid $gray-color;
+}
+
+.b-black{
+    border-color: $black-color !important;
+}
+.b-1{
+    border: 1px solid $gray-color;
+}
+.b-2{
+    border:2px solid $gray-color;
+}
+.b-3{
+    border: 3px solid $gray-color;
+}
+.b-4{
+    border:4px solid $gray-color;
+}
+.b-5{
+    border:5px solid $gray-color;
+}
+
+.b-main{
+    border-color: $main-color !important;
+}
+.b-second{
+    border-color: $second-color !important;
+}
+
+/* 
+    Font 
+*/
+.fs-10{font-size:10px !important}
+.fs-11{font-size:11px !important}
+.fs-12{font-size:12px !important}
+.fs-13{font-size:13px !important}
+.fs-14{font-size:14px !important}
+.fs-15{font-size:15px !important}
+.fs-16{font-size:16px !important}
+.fs-17{font-size:17px !important}
+.fs-18{font-size:18px !important}
+
+.text-uppercase{
+    text-transform: uppercase !important;
+}
+
+.text-bold{
+    font-weight: bold !important;
+}
+
+ .text-normal{
+    font-weight: normal !important;
+}
+
+.text-main{
+    font-family: $main-font !important;
+}
+ 
+.text-second{
+    font-family: $second-font !important;
+}
+
+.text-main-color{
+    color: $main-color !important;
+}
+.text-second-color{
+    color: $second-color !important;
+}
